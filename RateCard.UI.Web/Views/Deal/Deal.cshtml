@@ -1,0 +1,228 @@
+﻿@model IEnumerable<RateCard.Entities.Technology>
+
+@{
+    ViewBag.Title = "Deal";
+    var listOfTechnologies = Model;
+}
+
+<div id="top-section-inputs">
+
+    <div class="panel panel-default">
+ 
+            <h4 id="lblDealInputs">Deal Inputs</h4>
+
+            <div id="container-deal-inputs" class="panel-horizontal-align">
+
+                <table id="table-deal-inputs" class="table-cols-6">
+                    <thead>
+                        <tr>
+                            <th class="cust-name">Customer Name</th>
+                            <th class="sa-name">SA Name</th>
+                            <th class="loc">Location</th>
+                            <th class="sla">SLA</th>
+                            <th class="aoh">Region AOH</th>
+                            <th class="targ-marg">Target Margin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td class="filterable-cell"><input onfocus="changeColor(this)" id ="txtCustomerName" type="text" class="form-control" placeholder="Customer name" aria-describedby="basic-addon1"></td>
+                                <td class="filterable-cell"><input onfocus="changeColor(this)" id="txtSAName" type="text" class="form-control" placeholder="SA name" aria-describedby="basic-addon1"></td>
+                                <td class="filterable-cell">
+                                    <div class="form-group container-deal-input">
+                           
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="txtLocationCost" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" id="ddmLocationCost" aria-labelledby="ddmLocationCost">
+                                            <li><a href="#" onclick="UPDTxtLocationCost(this)">Alpharetta</a></li>
+                                            <li><a href="#" onclick="UPDTxtLocationCost(this)">Bangalore</a></li>
+                                            <li><a href="#" onclick="UPDTxtLocationCost(this)">Costa Rica</a></li>
+                                            <li><a href="#" onclick="UPDTxtLocationCost(this)">Sofia</a></li>
+                                            <li><a href="#" onclick="UPDTxtLocationCost(this)">Tunis</a></li>
+                                        </ul>
+                                    </div>
+
+                                </td>
+                                <td class="filterable-cell">
+                                    <div class="form-group container-deal-input">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="txtSLA" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" id="ddmSLA" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#" onclick="UPDTxtSLA(this)">Optimized</a></li>
+                                            <li><a href="#" onclick="UPDTxtSLA(this)">Standard</a></li>
+                                            <li><a href="#" onclick="UPDTxtSLA(this)">Basic</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td class="filterable-cell">
+                                    <div class="form-group container-deal-input">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="txtAOH" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li><a href="#" onclick="UPDTxtAOH(this)">AMS</a></li>
+                                            <li><a href="#" onclick="UPDTxtAOH(this)">APJ</a></li>
+                                            <li><a href="#" onclick="UPDTxtAOH(this)">EMEA</a></li>
+                                            <li><a href="#" onclick="UPDTxtAOH(this)">LAC</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td class="filterable-cell">
+                                    <input id="txtTargetMargin" type="number" class="form-control container-deal-input" onchange="UPDTxtTargetMargin()" placeholder="Target Margin" min="0" max="100" aria-describedby="basic-addon1">
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+        
+                <button id="btn-export-deal" type="button" class="btn btn-default btn-lg" onclick="">
+                    <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Export Deal
+                </button>
+            </div>
+    </div>
+ 
+</div>
+
+<div id="div-side-section-technologies">
+        <!-- Default panel contents -->
+    <div class="panel-heading hpe-panel-header" id="div-technologies-panel-header">
+        <h4 id="lblChooseTech">Choose Technologies</h4> 
+            <div id="container-select-all">
+                <label for="chkbxSelectAllMonit">Select All</label>
+                <input id="chkbxSelectAllMonit" type="checkbox" aria-label="..." checked onchange="UPDAllMonit()">
+                <label for="chkbxSelectAllOpsAdmin">Select All</label>
+                <input id="chkbxSelectAllOpsAdmin" type="checkbox" aria-label="..." checked onchange="UPDAllOpsAdmin()"> 
+            </div>
+
+        </div>
+        <div id="container-table-headers">
+            <!-- Table headers -->
+            <table class="table table-fixed no-space-below">
+                <thead>
+                    <tr>
+                        <th class="tech-name">Techonology</th>
+                        <th class="tech-units">Units</th>
+                        <th class="tech-monit">Monitoring</th>
+                        <th class="tech-opsadmin">Ops. & Admin</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>  
+       <div id="container-tablebody-technologies">
+            <table id="tblSelectedTechnologies" class="table table-fixed">
+
+                <tbody>
+                    @foreach (var tech in listOfTechnologies)
+                    {
+                        <tr>
+                            <td class="filterable-cell" width="40%">@tech.Description</td>
+                            <td class="filterable-cell" width="15%"><input type="number" class="input-tech-quantity" min="0" value="0" onchange="ValidateTblTechUnits()"></td>
+                            <td class="filterable-cell" width="15%"><input type="checkbox" aria-label="..." checked onchange="UpdateDealOutputs()"></td>
+                            <td class="filterable-cell" width="15%"><input type="checkbox" aria-label="..." checked onchange="UpdateDealOutputs()"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!-- Table body-->
+
+</div>
+
+<div id="divTabContainer">
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tabPanelPricingOutput" data-toggle="tab" role="tab" aria-controls="tab1">Pricing Output</a></li>
+            <li role="presentation"><a href="#tabPanelCasperInput" data-toggle="tab" role="tab" aria-controls="tab2">Casper Cost Input</a></li>
+        </ul>
+        <div id="tabContent1" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="tabPanelPricingOutput">
+                <div id="divTblNetPricePerYear">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">General Net Price per Year</div>
+                        <table id="tblNetPricePerYear" class="table table-fixed">
+                            <thead>
+                                <tr>
+                                    <th>Price</th>
+                                    <th>Year 1</th>
+                                    <th>Year 2</th>
+                                    <th>Year 3</th>
+                                    <th>Year 4</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="divTblFixedPrice">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Fixed Price</div>
+                        <table id="tblFixedPricePerYear" class="table table-fixed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Fixed Price Y1</th>
+                                    <th>Fixed Price Y2</th>
+                                    <th>Fixed Price Y3</th>
+                                    <th>Fixed Price Y4</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="divTechPricePerUnit">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Technology Price</div>
+                        <table id="tblTechnologyPrice" class="table table-fixed">
+                            <thead>
+                                <tr>
+                                    <th>Technology</th>
+                                    <th>Y1 Net Price/Unit</th>
+                                    <th>Y2 Net Price/Unit</th>
+                                    <th>Y3 Net Price/Unit</th>
+                                    <th>Y4 Net Price/Unit</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="tabPanelCasperInput">
+                <div id="divCasperCostInput">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Casper Cost</div>
+                        <table id="tblCasperCostInput" class="table table-fixed">
+                            <thead>
+                                <tr>
+                                    <th>Detail</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/Scripts/views/vwDeal.js")
+@section Scripts {
+<script type="text/javascript">
+
+        $(function() {
+            $("#txtLocationCost").text("Select a location cost");
+            $("#txtSLA").text("Select SLA");
+            $("#txtAOH").text("Select a Region");
+            $("#txtTargetMargin").val(35);
+        });
+</script>
+}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<RateCard.Entities.Technology>
+
+@{
+    ViewBag.Title = "Deal";
+    var listOfTechnologies = Model;
+}
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Technologies</div>
+
+    <!-- Table -->
+    <table class="table">
+
+        <tr>
+            <th>Techonology</th>
+            <th>Units</th>
+            <th>Monitoring</th>
+            <th>Ops. & Admin</th>
+        </tr>
+        @foreach (var tech in listOfTechnologies)
+        {
+            <tr>
+                <td>tech.Description</td>
+                <td><input type="number" class="input-tech-quantity" value="0"></td>
+                <td><input type="checkbox" aria-label="..."></td>
+                <td><input type="checkbox" aria-label="..."></td>
+            </tr>
+        }
+        
+    </table>
+</div>

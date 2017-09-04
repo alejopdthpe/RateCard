@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCard.OnPremises", "RateCard.OnPremises\RateCard.OnPremises.csproj", "{17BD19AA-F8B3-4FA5-B60A-CFDD127E2CE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCard.DataAccess", "RateCard.ApiCore\RateCard.DataAccess.csproj", "{B1C16C77-0E7D-4287-9B32-07C950E74A7C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F660ED0-124D-48E0-9E68-03049DEBD992} = {1F660ED0-124D-48E0-9E68-03049DEBD992}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCard.Api.Core", "RateCard.Api.Core\RateCard.Api.Core.csproj", "{9696FC2B-86E0-4D00-B48D-02AA03684FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCard.Entities", "RateCard.Entities\RateCard.Entities.csproj", "{1F660ED0-124D-48E0-9E68-03049DEBD992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateCard.UI.Web", "RateCard.UI.Web\RateCard.UI.Web.csproj", "{385CD005-8872-496F-ACFE-6D9A2A16B610}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17BD19AA-F8B3-4FA5-B60A-CFDD127E2CE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17BD19AA-F8B3-4FA5-B60A-CFDD127E2CE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17BD19AA-F8B3-4FA5-B60A-CFDD127E2CE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17BD19AA-F8B3-4FA5-B60A-CFDD127E2CE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1C16C77-0E7D-4287-9B32-07C950E74A7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C16C77-0E7D-4287-9B32-07C950E74A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C16C77-0E7D-4287-9B32-07C950E74A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C16C77-0E7D-4287-9B32-07C950E74A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9696FC2B-86E0-4D00-B48D-02AA03684FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9696FC2B-86E0-4D00-B48D-02AA03684FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9696FC2B-86E0-4D00-B48D-02AA03684FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9696FC2B-86E0-4D00-B48D-02AA03684FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F660ED0-124D-48E0-9E68-03049DEBD992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F660ED0-124D-48E0-9E68-03049DEBD992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F660ED0-124D-48E0-9E68-03049DEBD992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F660ED0-124D-48E0-9E68-03049DEBD992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385CD005-8872-496F-ACFE-6D9A2A16B610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385CD005-8872-496F-ACFE-6D9A2A16B610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385CD005-8872-496F-ACFE-6D9A2A16B610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385CD005-8872-496F-ACFE-6D9A2A16B610}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
